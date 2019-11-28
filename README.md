@@ -11,8 +11,11 @@ Print out a word frequency list.
 Example of the word frequency list:
 
 100: frog
+
 94: dog
+
 43: cog
+
 20: bog
 
 Advice:
