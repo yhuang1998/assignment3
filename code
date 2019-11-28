@@ -3,10 +3,13 @@ import java.util.*;
 import java.io.*;
 
 /**
- * Hello world!
- *
+ * This progrom is going to count how many times each word appear. 
+ * The input is a text file with lyrics.
+ * To scan and count word. 
  */
+ 
 public class WordCount {
+   // function to sort hashmap by values
   public static HashMap<String, Integer> sortByValue(HashMap<String, Integer> hm) {
 
     // Create a list from elements of HashMap
@@ -36,20 +39,24 @@ public class WordCount {
    Scanner input = new Scanner(new File("word.txt"));
 
     // count occurrences
+    //replace the punctuation and make it to lower case.
     HashMap<String, Integer> wordCounts = new HashMap<String, Integer>();
     while (input.hasNext()) {
       String next = input.next().toLowerCase();
+      next = next.replaceAll("\\p{Punct}", "");
       String clean = next;
       //next.replaceAll("\\p{Punct}", "").toLowerCase();
 
+      //if never seen this word
       if (!wordCounts.containsKey(clean)) {
         wordCounts.put(clean, 1);
       } else {
+       //seen this word before, count+1
         wordCounts.put(clean, wordCounts.get(clean) + 1);
       }
     }
 
-
+    //to get how many different words
     System.out.println("Total words = " + wordCounts.size());
 
     HashMap<String, Integer> sortedMapAsc = WordCount.sortByValue(wordCounts);
